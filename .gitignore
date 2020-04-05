@@ -1,0 +1,17 @@
+# Byte-compiled / optimized / DLL files
+__pycache__
+
+# virtualenv
+/venv
+ENV/
+
+# NPM
+/node_modules
+npm-debug.log
+npm-debug.log.*
+
+# MIX
+mix-manifest.json
+
+static/*
+!static/.gitkeep

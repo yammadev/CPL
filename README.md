@@ -35,8 +35,8 @@ CPL - Cartagena Potholes Locator
   # (On Windows)
   $ venv\Scripts\activate
 
-  # Install flask
-  $ pip install Flask
+  # Install Requirements
+  $ pip install -U -r requirements.txt
 ```
 
 ### Run
@@ -74,6 +74,10 @@ All notable changes to this project are documented in this part of the file. The
 - **Removed** for removed features.
 - **Fixed for** any bug fixes.
 - **Security** in case of vulnerabilities.
+
+### [1.0.1] - 2020-04-26
+#### Modified
+- `requirements` added. 
 
 ### [1.0.0] - 2020-04-04
 #### Added

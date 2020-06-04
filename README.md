@@ -75,12 +75,13 @@ All notable changes to this project are documented in this part of the file. The
 - **Fixed for** any bug fixes.
 - **Security** in case of vulnerabilities.
 
-### [1.0.1] - 2020-03-26
+### [1.1.0] - 2020-03-26
 #### Modified
 - New requirements added to `requirements.txt`.
 - `applicacion.py` now is `app.py`.
 - Minimal changes with Miligram in frontend.
 - New controllers added to `controllers/main.py`
+
 
 
 #### Added

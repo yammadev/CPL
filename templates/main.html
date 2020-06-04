@@ -2,13 +2,32 @@
 <html lang="ES">
 	<head>
 		<meta charset="UTF-8">
-		<title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %} - CPL</title>
+    <!-- Import Miligram lib from CDN -->
+		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">-->
 	</head>
 <body>
-  <h1>Main</h1>
-
   <!-- Content -->
   {% block content %}{% endblock %}
+
+   <!-- Links -->
+   <section class="container">
+    <h4>Other options</h4>
+    <ul>
+			<li><a href="/">Add Potholes</a></li>
+			<li><a href="#">Show Potholes on Map</a></li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <section class="container">
+    <blockquote>
+      <p><em>Do you like this? Get the code at <a href="#">Github</a></em></p>
+    </blockquote>
+  </section>
 
   <!-- Script -->
   <script src="{{ url_for('static', filename='main.js') }}"></script>

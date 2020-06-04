@@ -87,6 +87,9 @@ All notable changes to this project are documented in this part of the file. The
 - Controller for save potholes into database 
 - Controller for show potholes from database
 
+### [1.0.1] - 2020-04-26
+#### Modified
+- `requirements` added. 
 
 ### [1.0.0] - 2020-04-04
 #### Added

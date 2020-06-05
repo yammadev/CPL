@@ -1,0 +1,46 @@
+body
+  min-height: 100vh
+
+// Nav
+#nav
+  z-index: 1002 !important
+
+nav
+  background: white
+  box-shadow: none !important
+
+  li a
+    color: $black
+
+    &:focus, &:hover
+      background: none
+
+  .brand-logo
+    color: $grey
+    font-weight: bold
+
+    i.left
+      color: $primary
+      margin-right: 2px
+
+// Buttons
+@mixin btn($background, $text)
+  background: $background
+  color: $text
+
+  &:focus, &:hover
+    background: darken($background, 10%) !important
+
+.btn
+  border-radius: 4px
+  text-transform: none
+  box-shadow: none !important
+  font-weight: 600
+
+  &-primary
+    @include btn($primary, white)
+
+// Map
+.mapsection
+  height: 450px !important
+  width: 100%

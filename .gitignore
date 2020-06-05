@@ -10,8 +10,15 @@ ENV/
 npm-debug.log
 npm-debug.log.*
 
-# MIX
+# Databases
+database/*.db
+database/*.db-journal
+
+# Mix
 mix-manifest.json
 
 static/*
 !static/.gitkeep
+
+# Other
+.vscode

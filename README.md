@@ -1,109 +1,134 @@
-## About
+## Acerca
 CPL - Cartagena Potholes Locator
 
-## Development Guide
-### Requirements
+## Desarrollo
+### Requerimientos
 - [Python](https://www.python.org/)
 - [NPM](https://www.npmjs.com/)
 
-### Build
+### Preparar (Front-end)
 ```sh
-  # Install dependencies
-  $ npm install
+  # Instalar dependecias
+  npm install
 
-  # Run for dev purposes
-  $ npm run dev
+  # Compilar para desarrollo
+  npm run dev
 
-  # Or watch for changes (in standalone console)
-  # $ npm run watch
+  # O compilar para cuando hayan cambios
+  # (En una consola independiente)
+  # npm run watch
 
-  # Or run for production
-  # $ npm run prod
+  # O compilar para producción
+  # npm run prod
 ```
 
-### Prepare
+### Preparar (Back-end)
 ```sh
-  # Install virtual environment
-  $ python3 -m venv venv
+  # Instalar ambiente virtual
+  py -m venv venv
 
-  # (On Windows)
-  $ py -3 -m venv venv
+  # Activar ambiente virtual
+  venv\scripts\activate
 
-  # Activate virtual environment
-  $ . venv/bin/activate
-
-  # (On Windows)
-  $ venv\Scripts\activate
-
-  # Install Requirements
-  $ pip install -U -r requirements.txt
+  # Instalar requerimientos
+  pip install -U -r requirements.txt
 ```
 
-### Run
+### Configurar
 ```sh
-  # Setting
-  $ export FLASK_APP=application.py
+  # Definir
+  set FLASK_APP=application.py
 
-  # (On Windows)
-  $ set FLASK_APP=application.py
-
-  # Debug mode
-  $ export FLASK_ENV=development
-
-  # (On Windows)
-  $ set FLASK_ENV=development
-
-  # Run
-  $ flask run
-
-  # Go to http://127.0.0.1:5000
+  # Modo debug
+  set FLASK_ENV=development
 ```
 
-## Changelog
-All notable changes to this project are documented in this part of the file. The format is based on [Keep a Changelog](http://keepachangelog.com/).
+### Datos de prueba
+```shell
+  # Abrir
+  flask shell
 
-#### [x.y.z] - YYYY-MM-DD
-- **x** for major release related to major additions or changes.
-- **y** for minor release related to minor additions or changes in current major release.
-- **z** for minor release related to minor additions or changes in current minor release.
+  # Importar
+  from database import seeder
+
+  # Generar
+  seeder.run()
+
+  # Cerrar usando ^Z (CTRL + Z)
+```
+
+### Ejecutar
+```sh
+  # Ejecutar
+  flask run
+
+  # Ir a http://127.0.0.1:5000
+```
+
+## Registro de Cambios
+Todos los cambios notables a este proyecto están documentados en esta parte del archivo. El formato está basado en [Keep a Changelog](http://keepachangelog.com/).
+
+#### [x.y.z] - AAAA-MM-DD
+- **x** para versiones principales relacionadas con adiciones o cambios importantes.
+- **y** para versiones menores relacionadas con adiciones o cambios menores en la versión principal actual.
+- **z** para versiones menores relacionadas con adiciones o cambios menores en la versión menor actual.
 
 #### Extras
-- **Added** for new features.
-- **Modified** for changes in existing functionality.
-- **Deprecated** for soon-to-be removed features.
-- **Removed** for removed features.
-- **Fixed for** any bug fixes.
-- **Security** in case of vulnerabilities.
+- **Agregado** para nuevas funciones.
+- **Modificado** por cambios en la funcionalidad existente.
+- **Obsoleto** para funciones que se eliminarán próximamente.
+- **Removido** para funciones eliminadas.
+- **Corregido** cualquier corrección de errores.
+- **Seguridad** en caso de vulnerabilidades.
+
+### [1.2.0] - 2020-06-05
+#### Agregado
+- Multiples mejoras. 
+- Nuevas dependecias.
+- `Front-end` mejorado.
+- `Back-end` mejorado.
+
+- `Seeders`.
+- `Api`.
+
+#### Modificado
+- Nuevos requerimientos agregados a `requirements.txt`.
+- `app.py` vuelve a ser `applicacion.py`.
+
+#### Removido
+- Archivos sobrantes `.vscode` y `.gitkeep`.
+
+#### Seguridad
+- Removidos archivos `*.db` que no pueden ser compartidos en el repo.
 
 ### [1.1.0] - 2020-06-04
-#### Modified
-- New requirements added to `requirements.txt`.
-- `applicacion.py` now is `app.py`.
-- Minimal changes with Miligram in frontend.
-- New controllers added to `controllers/main.py`
+#### Agregado
+- Modelado de los datos con `SQLAlchemy`
+- Controladores para mostrar y guardar `Plotholes`
+- Controladores agregados a `controllers/main.py`
 
-#### Added
-- Data Modeling with SQLAlchemy
-- Controller for save potholes into database 
-- Controller for show potholes from database
+#### Modificado
+- Nuevos requerimientos agregados a `requirements.txt`.
+- `applicacion.py` ahora es `app.py`.
+- Cambios mínimos en el front-end con `Miligram`
 
 ### [1.0.1] - 2020-04-26
-#### Modified
-- `requirements` added. 
+#### Modificado
+- `requirements` agregados.
 
 ### [1.0.0] - 2020-04-04
 #### Added
-- Application propossed structure to fit `MVC` pattern.
+- Estructura del proyecto propuesta para ajustarse al patrón `MVC`.
 ```txt
   /
-    /controllers    <- Controllers
-    /database       <- Database
-    /models         <- Models
-    /resources      <- Files
-    /static         <- Compiled files
-    /templates      <- Views
-  application.py    <- Main App
-  webpack.mix.js    <- Asset compiler
+    /controllers    <- Controladores
+    /database       <- Base de datos
+    /models         <- Modelos / Clases
+    /resources      <- Archivos sin compilar
+    /static         <- Archivos compilados
+    /templates      <- Vistas / Plantillas
+  application.py    <- App principal
+  webpack.mix.js    <- Compilador de archivos
 ```
-- `Webpack` implemented using `Laravel-mix` to compile and mix assets
-- Initial commit
+- `Webpack` implementado usando `Laravel-mix` para compilar y mixear archivos.
+- `Commit` inicial.

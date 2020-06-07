@@ -2,13 +2,11 @@
 // Libs
 window.$ = window.jQuery = require('jquery');
 window.M = require('materialize-css');
-window.Swal = require('sweetalert');
 window.axios = require('axios');
 window.Vue = require('vue');
 
 // Components
 import mapsection from './_map.vue';
-import save from './_save.vue';
 
 // App
 var app = new Vue({
@@ -17,7 +15,6 @@ var app = new Vue({
 
   // Components
   components: {
-    mapsection,
-    save
+    mapsection
   }
-})
+});

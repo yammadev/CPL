@@ -15,3 +15,9 @@ def create_tables():
 def delete_tables():
     db.drop_all()
     print('Delete tables [Ok]')
+
+# Refresh
+def refresh():
+    db.drop_all()
+    db.create_all()
+    print('Refresh tables [Ok]')

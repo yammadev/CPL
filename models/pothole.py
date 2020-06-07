@@ -15,14 +15,16 @@ class Pothole(db.Model):
     lng = db.Column(db.Float)
     desc = db.Column(db.String(16777215))
     stat = db.Column(db.String(30))
+    date = db.Column(db.DateTime)
 
     # Initialize
-    def __init__(self, name, lat, lng, desc, stat):
+    def __init__(self, name, lat, lng, desc, stat, date):
         self.name = name
         self.lat = lat
         self.lng = lng
         self.desc = desc
         self.stat = stat
+        self.date = date
 
     # Seed
     def seed(fake):
@@ -31,7 +33,8 @@ class Pothole(db.Model):
             lat = random.uniform(10.412, 10.415),
             lng = random.uniform(-75.520, -75.490),
             desc = fake.address(),
-            stat = random.choice(['reported', 'repairing', 'repaired'])
+            stat = random.choice(['reported', 'repairing', 'repaired']),
+            date = fake.date_this_month()
         )
         pothole.save()
 
@@ -48,4 +51,6 @@ class Pothole(db.Model):
             lat = self.lat,
             lng = self.lng,
             desc = self.desc,
-            stat = self.stat)
+            stat = self.stat,
+            date = self.date
+            )

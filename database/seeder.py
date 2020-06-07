@@ -8,8 +8,7 @@ def run():
     print('Refreshing...')
 
     # Clear
-    base.delete_tables()
-    base.create_tables()
+    base.refresh()
 
     # Define
     fake = Faker('es_ES')

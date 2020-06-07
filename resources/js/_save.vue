@@ -4,10 +4,6 @@
     <div class="modal-content">
       <h5>Registrar</h5>
 
-      <p v-if="error" class="red-text"><br>
-        <span class="material-icons left">cancel</span>Lo sentimos, {{ error }}
-      </p>
-
       <!-- Form -->
       <form :action="send" class="row" method="POST">
         <div class="input-field col s12">
@@ -41,6 +37,8 @@
 </template>
 
 <script>
+import Swal from 'sweetalert';
+
 export default {
   // Component
   name: 'save',
@@ -60,8 +58,7 @@ export default {
         lat: this.point.lat,
         lng: this.point.lng,
         desc: ''
-      },
-      error: null
+      }
     }
   },
 
@@ -99,9 +96,6 @@ export default {
         // Close
         $('#save').modal('close');
 
-        // Reset
-        self.error = null;
-
         // Recall
         self.$parent.list();
         self.cancel();
@@ -117,7 +111,13 @@ export default {
 
       // Error
       .catch(function(error) {
-        self.error = error.response.data.message;
+        // Alert
+        Swal({
+          title: "Error",
+          text: 'Lo sentimos, ' + error.response.data.message,
+          icon: "error",
+          button: "Reintentar"
+        });
       });
     },
 
@@ -135,8 +135,6 @@ export default {
         lng: this.point.lng,
         desc: ''
       };
-
-      this.error = null;
     }
   }
 }

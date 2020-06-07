@@ -1,3 +1,5 @@
+![SCREENSHOT](docs/imgs/screenshot.png)
+
 ## Acerca
 CPL - Cartagena Potholes Locator
 
@@ -16,10 +18,10 @@ CPL - Cartagena Potholes Locator
 
   # O compilar para cuando hayan cambios
   # (En una consola independiente)
-  # npm run watch
+  npm run watch
 
   # O compilar para producción
-  # npm run prod
+  npm run prod
 ```
 
 ### Preparar (Back-end)
@@ -43,16 +45,18 @@ CPL - Cartagena Potholes Locator
   set FLASK_ENV=development
 ```
 
-### Datos de prueba
-```shell
+### Datos
+```sh
   # Abrir
   flask shell
 
-  # Importar
+  # Generar datos de prueba
   from database import seeder
-
-  # Generar
   seeder.run()
+
+  # O arrancar de cero
+  from database import base
+  base.refresh()
 
   # Cerrar usando ^Z (CTRL + Z)
 ```
@@ -81,11 +85,19 @@ Todos los cambios notables a este proyecto están documentados en esta parte del
 - **Corregido** cualquier corrección de errores.
 - **Seguridad** en caso de vulnerabilidades.
 
-### [1.3.1] - 2020-06-05
+### [1.6.0] - 2020-06-07
+#### Agregado
+- Últimas funciones y ajustes.
+
+### [1.5.0] - 2020-06-06
+#### Agregado
+- Funcionalidades de estadísticas.
+
+### [1.4.0] - 2020-06-06
 #### Agregado
 - Funcionalidades de actualización.
 
-### [1.3.0] - 2020-06-05
+### [1.3.0] - 2020-06-06
 #### Agregado
 - Multiples mejoras.
 - Nuevas dependecias.

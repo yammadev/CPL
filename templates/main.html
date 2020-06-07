@@ -15,7 +15,11 @@
 		<nav role="navigation">
 			<div class="nav-wrapper container">
 				<a href="#!" class="brand-logo">
-					<i class="material-icons left">api</i>CPL</a>
+					<i class="material-icons left">api</i>CPL
+				</a>
+				<a href="#" data-target="sidenav" class="sidenav-trigger">
+					<i class="material-icons">menu</i>
+				</a>
 
 				<!-- Right menu -->
 				<ul class="right hide-on-med-and-down">
@@ -31,6 +35,18 @@
 			</div>
 		</nav>
 	</div>
+
+	<!-- Sidenav -->
+	<ul class="sidenav" id="sidenav">
+		<li><a href="#map" class="sidenav-close">Mapa</a></li>
+		<li><a href="#stats" class="sidenav-close">Estadísticas</a></li>
+		<li>
+			<a class="btn btn-blue sidenav-close"
+					onclick="document.getElementById('toggleSave').click()">
+				Publicar
+			</a>
+		</li>
+  </ul>
 
   <!-- Content -->
 	<div id="app">

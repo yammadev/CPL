@@ -16,5 +16,10 @@ var app = new Vue({
   // Components
   components: {
     mapsection
+  },
+
+  // Mounted
+  mounted: function() {
+    $('.sidenav').sidenav();
   }
 });

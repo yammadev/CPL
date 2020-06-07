@@ -1,4 +1,4 @@
-![SCREENSHOT](docs/imgs/screenshot.png)
+![SCREENSHOT](screenshot.png)
 
 ## Acerca
 CPL - Cartagena Potholes Locator
@@ -84,6 +84,10 @@ Todos los cambios notables a este proyecto están documentados en esta parte del
 - **Removido** para funciones eliminadas.
 - **Corregido** cualquier corrección de errores.
 - **Seguridad** en caso de vulnerabilidades.
+
+### [1.6.2] - 2020-06-07
+#### Modificado
+- `Screenshot`.
 
 ### [1.6.1] - 2020-06-07
 #### Modificado

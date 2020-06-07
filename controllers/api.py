@@ -1,6 +1,6 @@
 from application import app as api
 from database.base import db
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, request, make_response, jsonify
 
 from models.pothole import Pothole
 
@@ -10,46 +10,49 @@ from models.pothole import Pothole
 @api.route('/list')
 def list():
     potholes = Pothole.query.all()
-    potholes_json = {}
+    list = {}
 
     for pothole in range(0, len(potholes)):
-        potholes_json[pothole + 1] = {
-          'name': potholes[pothole].name,
-          'position': [potholes[pothole].lat, potholes[pothole].lng],
-          'desc': potholes[pothole].desc
+        list[pothole + 1] = {
+            'id': potholes[pothole].id,
+            'name': potholes[pothole].name,
+            'lat': potholes[pothole].lat,
+            'lng': potholes[pothole].lng,
+            'desc': potholes[pothole].desc,
+            'stat': potholes[pothole].stat
         }
 
-    if potholes_json:
-        return jsonify(potholes_json)
+    if list:
+        return make_response(list, 200)
 
-    return jsonify(error = 'Database is empty... Please fill it')
+    data = {'message': 'no hay contenido para mostrar'}
+    return make_response(jsonify(data), 204)
 
 # Save a pothole in database
 # [POST]
-# @return # TODO:
+# @return response
 @api.route('/save', methods = ['POST'])
 def save():
-	potholes = Pothole.query.all()
-	aux = []
-	repeat = 0
+    data = request.get_json()
 
-	if request.method == 'POST':
-		name = request.form['name']
-		lat = request.form['latitude']
-		lng = request.form['longitude']
-		des = request.form['description']
-		loc = (lat, lng)
+    # Check if it's registered
+    if Pothole.query.filter((Pothole.lat == data['lat']) and (Pothole.lng == data['lng'])).first():
+        data = {'message': 'este punto ha sido reportado previamente, intente nuevamente con otro punto.'}
+        return make_response(jsonify(data), 422)
 
-    	for i in potholes:
-    		aux.append((i.lat, i.lng))
+    # Check if it's info is completed
+    if not data['name'] or not data['desc']:
+        data = {'message': 'Hay campos requeridos, por favor llénelos para continuar.'}
+        return make_response(jsonify(data), 422)
 
-    	for i in aux:
-    		if i == loc:
-      			repeat += 1
+    # Save and return
+    name = data['name']
+    lat = data['lat']
+    lng = data['lng']
+    desc = data['desc']
+    stat = 'reported'
 
-    	if repeat > 0:
-    		return render_template('index.html', potholes = potholes)     # TODO
+    pothole = Pothole(name = name, lat = lat, lng = lng, desc = desc, stat = stat)
+    pothole.save()
 
-    	pothole = Pothole(name = name, lat = lat, lng = lng, desc = des)
-    	pothole.save()
-    	return render_template('index.html', potholes = potholes)
+    return make_response(pothole.serialize(), 200)

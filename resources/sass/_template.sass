@@ -16,7 +16,7 @@ nav
       background: none
 
   .brand-logo
-    color: $grey
+    color: $black
     font-weight: bold
 
     i.left
@@ -25,22 +25,60 @@ nav
 
 // Buttons
 @mixin btn($background, $text)
-  background: $background
-  color: $text
+  border-radius: 4px
+  font-weight: 600
+  text-transform: capitalize
+  background: $background !important
+  color: $text !important
 
   &:focus, &:hover
     background: darken($background, 10%) !important
 
 .btn
-  border-radius: 4px
-  text-transform: none
-  box-shadow: none !important
-  font-weight: 600
-
   &-primary
     @include btn($primary, white)
 
+  &-secundary
+    @include btn($secundary, white)
+
+  &-blue
+    @include btn($blue, white)
+
+  &-green
+    @include btn($green, white)
+
+  &-flat
+    @include btn(transparent, black)
+
+.swal-button
+  @include btn($primary, white)
+
 // Map
 .mapsection
-  height: 450px !important
+  height: 500px !important
   width: 100%
+
+  // Info
+  .info
+    padding: 10px
+
+    p
+      margin: 0px !important
+
+      span
+        font-weight: bold
+
+      i
+        vertical-align: middle
+
+      a
+        margin-top: 10px
+
+  // Track
+  .track
+    .btn
+      color: white !important
+
+.modal
+  .btn-primary
+    padding: 0px 40px

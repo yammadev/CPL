@@ -2,6 +2,7 @@
 // Libs
 window.$ = window.jQuery = require('jquery');
 window.M = require('materialize-css');
+window.Swal = require('sweetalert');
 window.axios = require('axios');
 window.Vue = require('vue');
 

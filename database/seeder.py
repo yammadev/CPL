@@ -15,7 +15,7 @@ def run():
     fake = Faker('es_ES')
 
     # Generate
-    n = fake.pyint(min_value = 10, max_value = 30)
+    n = fake.pyint(min_value = 15, max_value = 30)
 
     print(f'Generating {n}... ')
 

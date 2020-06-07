@@ -14,9 +14,6 @@ npm-debug.log.*
 database/*.db
 database/*.db-journal
 
-# Mix
-mix-manifest.json
-
 static/*
 !static/.gitkeep
 

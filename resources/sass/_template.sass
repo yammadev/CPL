@@ -20,7 +20,7 @@ nav
     font-weight: bold
 
     i.left
-      color: $primary
+      color: $blue
       margin-right: 2px
 
 // Buttons
@@ -35,11 +35,8 @@ nav
     background: darken($background, 10%) !important
 
 .btn
-  &-primary
-    @include btn($primary, white)
-
-  &-secundary
-    @include btn($secundary, white)
+  &-red
+    @include btn($red, white)
 
   &-blue
     @include btn($blue, white)
@@ -51,7 +48,7 @@ nav
     @include btn(transparent, black)
 
 .swal-button
-  @include btn($primary, white)
+  @include btn($blue, white)
 
 // Map
 .mapsection
@@ -79,6 +76,7 @@ nav
     .btn
       color: white !important
 
+// Modal
 .modal
-  .btn-primary
+  .btn
     padding: 0px 40px

@@ -56,6 +56,12 @@
                 ¿Reparado?
             </a>
           </p>
+          <p v-else class="row">
+            <a href="#" class="btn btn-red col s12"
+              @click="changeStatus('reported', pothole.id)">
+              ¿Volver a reportar?
+            </a>
+          </p>
         </l-popup>
 
         <!-- Icon -->
@@ -73,7 +79,7 @@
         <!-- Tolltip -->
         <l-tooltip :options="{ permanent: true, interactive: true }" class="row">
           <p class="col s12">Ubique el punto que desea reportar</p>
-          <a class="col s12 btn btn-secundary" @click="openSave">¡Listo!</a>
+          <a class="col s12 btn btn-red" @click="openSave">¡Listo!</a>
         </l-tooltip>
       </l-marker>
     </l-map>
@@ -142,6 +148,7 @@ export default {
     // List
     list: function() {
       let self = this;
+      self.potholes = null;
 
       // Call
       axios.get('list')
@@ -149,7 +156,6 @@ export default {
       // Success
       .then(function(response) {
         self.potholes = response.data;
-
         if(response.status == 204) {
           // Alert
           Swal({
@@ -178,9 +184,26 @@ export default {
     },
 
     // Change status
-    // TODO
-    changeStatus: function(status, id) {
-      console.log(status + ' - ' + id);
+    changeStatus: function(stat, id) {
+      let self = this;
+
+      // Call
+      axios.post('/update', {
+        'stat': stat,
+        'id': id
+      })
+      // Success
+      .then(function(response) {
+        // Alert
+        Swal({
+          title: "Listo",
+          text: "Reporte actualizado.",
+          icon: "success",
+          button: "Continuar"
+        });
+
+        self.list();
+      });
     }
   }
 };

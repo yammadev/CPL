@@ -35,7 +35,7 @@
     <!-- Actions -->
     <div class="modal-footer">
       <a href="#!" class="modal-close btn-flat" @click="cancel">Cancelar</a>
-      <a href="#!" class="btn btn-primary" @click="send">Enviar</a>
+      <a href="#!" class="btn btn-blue" @click="send">Enviar</a>
     </div>
   </div>
 </template>

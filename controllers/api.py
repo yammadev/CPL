@@ -4,7 +4,7 @@ from flask import Flask, request, make_response, jsonify
 
 from models.pothole import Pothole
 
-# List route...
+# List potholes...
 # [GET]
 # @return response
 @api.route('/list')
@@ -25,10 +25,10 @@ def list():
     if list:
         return make_response(list, 200)
 
-    data = {'message': 'no hay contenido para mostrar'}
-    return make_response(jsonify(data), 204)
+    message = {'message': 'no hay contenido para mostrar'}
+    return make_response(jsonify(message), 204)
 
-# Save a pothole in database
+# Save a pothole...
 # [POST]
 # @return response
 @api.route('/save', methods = ['POST'])
@@ -37,13 +37,13 @@ def save():
 
     # Check if it's registered
     if Pothole.query.filter((Pothole.lat == data['lat']) and (Pothole.lng == data['lng'])).first():
-        data = {'message': 'este punto ha sido reportado previamente, intente nuevamente con otro punto.'}
-        return make_response(jsonify(data), 422)
+        message = {'message': 'este punto ha sido reportado previamente, intente nuevamente con otro punto.'}
+        return make_response(jsonify(message), 422)
 
     # Check if it's info is completed
     if not data['name'] or not data['desc']:
-        data = {'message': 'Hay campos requeridos, por favor llénelos para continuar.'}
-        return make_response(jsonify(data), 422)
+        message = {'message': 'Hay campos requeridos, por favor llénelos para continuar.'}
+        return make_response(jsonify(message), 422)
 
     # Save and return
     name = data['name']
@@ -56,3 +56,22 @@ def save():
     pothole.save()
 
     return make_response(pothole.serialize(), 200)
+
+# Update a pothole...
+# [POST]
+# @return response
+@api.route('/update', methods = ['POST'])
+def update():
+    data = request.get_json()
+
+    pothole = Pothole.query.get(data['id'])
+
+    if not pothole:
+        message = {'message': 'Registro no existe'}
+        return make_response(jsonify(message), 200)
+
+    pothole.stat = data['stat']
+    db.session.commit()
+
+    message = {'message': 'Registro actualizado.'}
+    return make_response(jsonify(message), 200)

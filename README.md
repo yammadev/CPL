@@ -1,13 +1,24 @@
 ![SCREENSHOT](screenshot.png)
 
-## Acerca
+# Acerca
 CPL - Cartagena Potholes Locator
 
-## Desarrollo
-### Requerimientos
+# Desarrollo
+## Requerimientos
 - [Python](https://www.python.org/)
 - [NPM](https://www.npmjs.com/)
 
+## Instrucciones para Docker
+### Ejecutar y actualizar
+```sh
+  # Crear una imagen
+  $ docker build -t "image-name" .
+
+  # Crear un contenedor a partir de la imagen
+  $ docker run -p 5000:5000 "image-name"
+```
+
+## Instrucciones para ejecutar directamente en consola
 ### Preparar (Front-end)
 ```sh
   # Instalar dependecias
@@ -69,7 +80,7 @@ CPL - Cartagena Potholes Locator
   # Ir a http://127.0.0.1:5000
 ```
 
-## Registro de Cambios
+# Registro de Cambios
 Todos los cambios notables a este proyecto están documentados en esta parte del archivo. El formato está basado en [Keep a Changelog](http://keepachangelog.com/).
 
 #### [x.y.z] - AAAA-MM-DD
@@ -85,9 +96,15 @@ Todos los cambios notables a este proyecto están documentados en esta parte del
 - **Corregido** cualquier corrección de errores.
 - **Seguridad** en caso de vulnerabilidades.
 
+### [1.8.0] - 2020-06-07
+#### Agregado
+- `Dockerfile` sin datos de prueba generados por `seeder.run()`.
+#### Modificado
+- `README`, información sobre ejecutar la aplicación con Docker.
+
 ### [1.7.0] - 2020-06-07
 #### Modificado
-- Ajustes de `responsive`. 
+- Ajustes de `responsive`.
 
 ### [1.6.2] - 2020-06-07
 #### Modificado
